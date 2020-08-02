@@ -1,5 +1,5 @@
 # Main program to parse a text file containing words and its meanings and printing those as output
-
+import os
 from collections import defaultdict
 
 
@@ -7,9 +7,10 @@ from collections import defaultdict
 def doesFileExist(path):
     try:
         filePointer = open(path, 'r')
+        print("\nFile exists at - " + path + "\n")
         return filePointer
     except FileNotFoundError:
-        print("File does not exist on the path specified!")
+        print("\nFile does not exist on the path specified!")
         exit()
 
 
@@ -30,5 +31,6 @@ def readingDictionary(pointerToFile):
 
 
 # Calling functions
-fileHandle = doesFileExist("test_input.txt")
+filePath = os.path.dirname(__file__) + "\\test_input.txt"
+fileHandle = doesFileExist(filePath)
 readingDictionary(fileHandle)
